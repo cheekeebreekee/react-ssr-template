@@ -11,13 +11,13 @@ import App from "../shared/App";
 import "source-map-support/register";
 
 const app = express();
-let dataUrl = `https://se-ssr-react.firebaseio.com/data`;
+let dataUrl = `https://api.myjson.com/bins/g4lwn`;
 
 app.use(cors());
 app.use(express.static("public"));
 
 app.get(dataUrl, (req, res) => {
-  res.json();
+  console.log(res.json());
 });
 
 app.get("*", (req, res, next) => {
