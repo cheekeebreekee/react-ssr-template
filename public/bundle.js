@@ -7544,8 +7544,8 @@ function reducer() {
   var action = arguments[1];
 
   switch (action.type) {
-    case FETCH_NEWS_SUCCESS:
-      return Object.assign({}, state, { news: action.payload });
+    // case FETCH_NEWS_SUCCESS:
+    //   return { ...state, news: action.payload };
     case FETCH_FEATURE_CONTENT_SUCCESS:
       return Object.assign({}, state, { featureContent: action.payload });
     default:
@@ -7566,7 +7566,7 @@ var newsError = function newsError() {
 var requestFeatureContent = function requestFeatureContent() {
   return { type: FETCH_FEATURE_CONTENT_REQUEST };
 };
-var receivedFeatureContent = function receivedFeatureContent() {
+var receivedFeatureContent = function receivedFeatureContent(featureContent) {
   return { type: FETCH_FEATURE_CONTENT_SUCCESS, payload: featureContent };
 };
 var featureContentError = function featureContentError() {
@@ -7590,7 +7590,7 @@ var fetchFeatureContent = exports.fetchFeatureContent = function fetchFeatureCon
   return function (dispatch, getState) {
     dispatch(requestFeatureContent());
     return fetch("https://api.myjson.com/bins/g4lwn").then(function (response) {
-      return console.log(data);
+      return response.json();
     }).then(function (featureContent) {
       return dispatch(receivedFeatureContent(featureContent));
     }).catch(function (err) {
@@ -12674,7 +12674,7 @@ var isExtraneousPopstateEvent = function isExtraneousPopstateEvent(event) {
 "use strict";
 
 
-var _jsxFileName = "D:\\react-ssr-template\\src\\browser\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/browser/index.js";
 
 var _react = __webpack_require__(5);
 
@@ -29370,7 +29370,7 @@ module.exports = self.fetch.bind(self);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\App.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/App.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29486,7 +29486,7 @@ exports.default = routes;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\home\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/home/index.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29593,7 +29593,7 @@ module.exports = "/media/wizards.jpg";
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\news\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/news/index.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29675,7 +29675,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(News);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\news\\NewsList.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/news/NewsList.js";
 exports.default = NewsList;
 
 var _react = __webpack_require__(5);
@@ -29777,7 +29777,7 @@ function NewsList(_ref) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\FeatureContent\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/FeatureContent/index.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29888,7 +29888,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(FeatureContent);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\FeatureContent\\FeatureContentItem.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/FeatureContent/FeatureContentItem.js";
 exports.default = FeatureContentItem;
 
 var _react = __webpack_require__(5);

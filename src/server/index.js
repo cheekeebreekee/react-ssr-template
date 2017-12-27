@@ -11,18 +11,12 @@ import App from "../shared/App";
 import "source-map-support/register";
 
 const app = express();
-let dataUrl = `https://api.myjson.com/bins/g4lwn`;
 
 app.use(cors());
 app.use(express.static("public"));
 
-app.get(dataUrl, (req, res) => {
-  console.log(res.json());
-});
-
 app.get("*", (req, res, next) => {
   const store = configureStore();
-
   const promises = routes.reduce((acc, route) => {
     if (matchPath(req.url, route) && route.component && route.component.initialAction) {
       acc.push(Promise.resolve(store.dispatch(route.component.initialAction())));
@@ -40,13 +34,12 @@ app.get("*", (req, res, next) => {
           </StaticRouter>
         </Provider>
       );
-
       const initialData = store.getState();
       res.send(`
         <!DOCTYPE html>
         <html>
           <head>
-            <title>W Combinator</title>
+            <title>SE React SSR</title>
             <link rel="stylesheet" href="/css/main.css">
             <script src="/bundle.js" defer></script>
             <script>window.__initialData__ = ${serialize(initialData)}</script>

@@ -11633,8 +11633,8 @@ function reducer() {
   var action = arguments[1];
 
   switch (action.type) {
-    case FETCH_NEWS_SUCCESS:
-      return Object.assign({}, state, { news: action.payload });
+    // case FETCH_NEWS_SUCCESS:
+    //   return { ...state, news: action.payload };
     case FETCH_FEATURE_CONTENT_SUCCESS:
       return Object.assign({}, state, { featureContent: action.payload });
     default:
@@ -11655,7 +11655,7 @@ var newsError = function newsError() {
 var requestFeatureContent = function requestFeatureContent() {
   return { type: FETCH_FEATURE_CONTENT_REQUEST };
 };
-var receivedFeatureContent = function receivedFeatureContent() {
+var receivedFeatureContent = function receivedFeatureContent(featureContent) {
   return { type: FETCH_FEATURE_CONTENT_SUCCESS, payload: featureContent };
 };
 var featureContentError = function featureContentError() {
@@ -11679,7 +11679,7 @@ var fetchFeatureContent = exports.fetchFeatureContent = function fetchFeatureCon
   return function (dispatch, getState) {
     dispatch(requestFeatureContent());
     return fetch("https://api.myjson.com/bins/g4lwn").then(function (response) {
-      return console.log(data);
+      return response.json();
     }).then(function (featureContent) {
       return dispatch(receivedFeatureContent(featureContent));
     }).catch(function (err) {
@@ -21328,7 +21328,7 @@ exports.ArraySet = ArraySet;
 "use strict";
 
 
-var _jsxFileName = "D:\\react-ssr-template\\src\\server\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/server/index.js";
 
 var _express = __webpack_require__(177);
 
@@ -21371,18 +21371,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var app = (0, _express2.default)();
-var dataUrl = "https://api.myjson.com/bins/g4lwn";
 
 app.use((0, _cors2.default)());
 app.use(_express2.default.static("public"));
 
-app.get(dataUrl, function (req, res) {
-  console.log(res.json());
-});
-
 app.get("*", function (req, res, next) {
   var store = (0, _configureStore2.default)();
-
   var promises = _routes2.default.reduce(function (acc, route) {
     if ((0, _reactRouterDom.matchPath)(req.url, route) && route.component && route.component.initialAction) {
       acc.push(Promise.resolve(store.dispatch(route.component.initialAction())));
@@ -21396,7 +21390,7 @@ app.get("*", function (req, res, next) {
       _reactRedux.Provider,
       _defineProperty({ store: store, __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 31
         },
         __self: undefined
       }, "__self", undefined),
@@ -21404,22 +21398,21 @@ app.get("*", function (req, res, next) {
         _reactRouterDom.StaticRouter,
         _defineProperty({ location: req.url, context: context, __source: {
             fileName: _jsxFileName,
-            lineNumber: 38
+            lineNumber: 32
           },
           __self: undefined
         }, "__self", undefined),
         _react2.default.createElement(_App2.default, _defineProperty({
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 39
+            lineNumber: 33
           },
           __self: undefined
         }, "__self", undefined))
       )
     ));
-
     var initialData = store.getState();
-    res.send("\n        <!DOCTYPE html>\n        <html>\n          <head>\n            <title>W Combinator</title>\n            <link rel=\"stylesheet\" href=\"/css/main.css\">\n            <script src=\"/bundle.js\" defer></script>\n            <script>window.__initialData__ = " + (0, _serializeJavascript2.default)(initialData) + "</script>\n          </head>\n\n          <body>\n            <div id=\"root\">" + markup + "</div>\n          </body>\n        </html>\n      ");
+    res.send("\n        <!DOCTYPE html>\n        <html>\n          <head>\n            <title>SE React SSR</title>\n            <link rel=\"stylesheet\" href=\"/css/main.css\">\n            <script src=\"/bundle.js\" defer></script>\n            <script>window.__initialData__ = " + (0, _serializeJavascript2.default)(initialData) + "</script>\n          </head>\n\n          <body>\n            <div id=\"root\">" + markup + "</div>\n          </body>\n        </html>\n      ");
   }).catch(next);
 });
 
@@ -48603,7 +48596,7 @@ module.exports = function serialize(obj, options) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\home\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/home/index.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -48710,7 +48703,7 @@ module.exports = "/media/wizards.jpg";
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\news\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/news/index.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -49416,7 +49409,7 @@ Request.prototype.clone = function() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\news\\NewsList.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/news/NewsList.js";
 exports.default = NewsList;
 
 var _react = __webpack_require__(4);
@@ -49518,7 +49511,7 @@ function NewsList(_ref) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\FeatureContent\\index.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/FeatureContent/index.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -49629,7 +49622,7 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(FeatureContent);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\FeatureContent\\FeatureContentItem.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/FeatureContent/FeatureContentItem.js";
 exports.default = FeatureContentItem;
 
 var _react = __webpack_require__(4);
@@ -49818,7 +49811,7 @@ exports['default'] = thunk;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _jsxFileName = "D:\\react-ssr-template\\src\\shared\\App.js";
+var _jsxFileName = "/Users/simakyahor/Downloads/react-ssr-template/src/shared/App.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
