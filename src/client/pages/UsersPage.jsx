@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -7,15 +6,6 @@ import { fetchUsers } from '../modules/users';
 import Users from '../components/Users';
 
 class UsersPage extends Component {
-  static propTypes = {
-    fetchUsers: PropTypes.func.isRequired,
-    users: PropTypes.arrayOf(PropTypes.object),
-    loading: PropTypes.bool,
-  };
-  static defaultProps = {
-    users: [],
-    loading: false,
-  };
 
   static fetchData(dispatch) {
     return dispatch(fetchUsers());

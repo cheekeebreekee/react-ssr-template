@@ -1,6 +1,7 @@
 import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
 import UserPage from './pages/UserPage';
+import FeatureContent from './components/FeatureContent.jsx';
 
 export default [
   {
@@ -16,4 +17,8 @@ export default [
     path: '/users',
     component: UsersPage,
   },
+  {
+    path: '/feature-content',
+    component: FeatureContent,
+  }
 ];

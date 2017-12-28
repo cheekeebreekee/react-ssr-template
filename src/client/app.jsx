@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link, Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import 'isomorphic-fetch';
@@ -19,9 +18,5 @@ const App = ({ name }) => (
     </Switch>
   </div>
 );
-
-App.propTypes = {
-  name: PropTypes.string.isRequired,
-};
 
 export default App;

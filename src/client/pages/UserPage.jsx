@@ -1,29 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { fetchUserById } from '../modules/users';
 
 class UserPage extends Component {
-  static propTypes = {
-    fetchUserById: PropTypes.func.isRequired,
-    user: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        userId: PropTypes.string.isRequired,
-      }).isRequired,
-    }).isRequired,
-    loading: PropTypes.bool,
-  };
-  static defaultProps = {
-    user: null,
-    loading: false,
-  };
-
+  
   static fetchData(dispatch, match) {
     return dispatch(fetchUserById(match.params.userId));
   }

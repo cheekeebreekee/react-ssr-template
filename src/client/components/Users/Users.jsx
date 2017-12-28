@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import User from './User';
 
 const Users = ({ items }) => (
@@ -10,16 +8,5 @@ const Users = ({ items }) => (
     ))}
   </div>
 );
-
-Users.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-  })),
-};
-
-Users.defaultProps = {
-  items: [],
-};
 
 export default Users;
