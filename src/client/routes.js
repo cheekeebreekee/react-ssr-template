@@ -1,7 +1,7 @@
 import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
 import UserPage from './pages/UserPage';
-import FeatureContent from './components/FeatureContent.jsx';
+import FeatureContent from './pages/FeatureContent';
 
 export default [
   {

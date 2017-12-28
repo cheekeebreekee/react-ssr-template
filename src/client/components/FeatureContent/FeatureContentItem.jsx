@@ -1,5 +1,4 @@
 import React from "react";
-import "./FeatureContentItem.css";
 
 export default function FeatureContentItem({ featureContent }) {
 return (
