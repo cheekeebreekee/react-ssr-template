@@ -1,11 +1,3 @@
 {
-    "presets": ["env", "stage-0", "react-app"],
-    "env": {
-      "dev": {
-        "presets": []
-      },
-      "prod": {
-        "presets": []
-      }
-    }
-  }
+  "presets": ["env", "react", "stage-2"]
+}
