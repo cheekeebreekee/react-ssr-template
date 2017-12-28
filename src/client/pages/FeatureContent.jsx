@@ -16,7 +16,7 @@ class FeatureContent extends Component {
 
   render() {
     const { featureContent } = this.props;
-    console.log(this.props);
+    console.log(featureContent);
     return (
         <FeatureContentItems featureContent={featureContent} />
     );
@@ -24,10 +24,10 @@ class FeatureContent extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.featureContent
+    featureContent: state.featureContent
 });
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchFeatureContent,
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(featureContent);
+export default connect(mapStateToProps, mapDispatchToProps)(FeatureContent);

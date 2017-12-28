@@ -1,4 +1,6 @@
 const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const autoprefixer = require("autoprefixer");
 
 module.exports = {
   entry: './src/client/index.jsx',
@@ -18,6 +20,26 @@ module.exports = {
         test: /\.jsx?$/,
         use: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: "css-loader",
+              options: { importLoaders: 1 }
+            },
+            {
+              loader: "postcss-loader",
+              options: { plugins: [autoprefixer()] }
+            }
+          ]
+        })
+      }
     ],
   },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: "[name].css"
+    })
+  ]
 };
